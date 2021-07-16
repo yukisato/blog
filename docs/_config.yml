@@ -13,15 +13,11 @@ minima:
   skin: solarized
   # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize date format
   date_format: "%b %-d, %Y"
-  disqus:
-    shortname: yukisato_dev
 
   social_links:
     twitter: yukisato_dev
     github: yukisato
     linkedin: yuki-sato
-
-  google_analytics: G-VGG522PKMD
 
 defaults:
   -
@@ -31,13 +27,10 @@ defaults:
     values:
       layout: post
       author: Yuki Sato
-  -
-    scope:
-      path: "_posts/general"
-      type: posts
-    values:
-      category: general
 
+disqus:
+  shortname: yukisato_dev
+google_analytics: G-VGG522PKMD
 url: "https://yukisato.github.io"
 plugins:
   - jekyll-sitemap
