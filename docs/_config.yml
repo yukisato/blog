@@ -8,6 +8,8 @@ permalink: /:categories/:title:output_ext
 author:
   name: Yuki Sato
   email: 'yuki.sato.dev@gmail.com'
+url: "https://yukisato.github.io"
+baseurl: "/blog"
 
 minima:
   skin: solarized
@@ -29,6 +31,5 @@ defaults:
       author: Yuki Sato
 
 google_analytics: G-VGG522PKMD
-url: "https://yukisato.github.io"
 plugins:
   - jekyll-sitemap
