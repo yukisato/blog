@@ -29,7 +29,7 @@ defaults:
       author: Yuki Sato
 
 disqus:
-  shortname: yukisato_dev
+  shortname: yukisato
 google_analytics: G-VGG522PKMD
 url: "https://yukisato.github.io"
 plugins:
