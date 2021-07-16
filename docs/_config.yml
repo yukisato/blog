@@ -38,6 +38,6 @@ defaults:
     values:
       category: general
 
-url: "https://yukisato.github.io/blog/"
+url: "https://yukisato.github.io"
 plugins:
   - jekyll-sitemap
