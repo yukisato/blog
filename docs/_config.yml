@@ -1,0 +1,43 @@
+encoding: utf-8
+timezone: America/Vancouver
+remote_theme: jekyll/minima
+show_excerpts: true
+title: Coding as Life
+description: Random posts about programming and productivity
+permalink: /:categories/:title:output_ext
+author:
+  name: Yuki Sato
+  email: 'yuki.sato.dev@gmail.com'
+
+minima:
+  skin: solarized
+  # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize date format
+  date_format: "%b %-d, %Y"
+  disqus:
+    shortname: yukisato_dev
+
+  social_links:
+    twitter: yukisato_dev
+    github: yukisato
+    linkedin: yuki-sato
+
+  google_analytics: G-VGG522PKMD
+
+defaults:
+  -
+    scope:
+      path: "_posts" # an empty string here means all files in the project
+      type: posts
+    values:
+      layout: post
+      author: Yuki Sato
+  -
+    scope:
+      path: "_posts/general"
+      type: posts
+    values:
+      category: general
+
+url: "https://yukisato.github.io/blog/"
+plugins:
+  - jekyll-sitemap
