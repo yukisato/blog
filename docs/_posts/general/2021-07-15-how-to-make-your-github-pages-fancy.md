@@ -38,3 +38,32 @@ remote_theme: jekyll/minima
 ```
 
 After you apply this configuration, you'll realize that this site is actually built with this theme :)
+
+## More customizations
+
+If you want to more customize youur pages like a blog site, you literally need to make your repository a Jekyll site.
+Fortunately, as desribed above, GitHub Pages is backended by Jekyll so we don't have to install Jekyll itself and all files of the theme you applied. But there still be something to do.
+
+Here's a basic instructions to change your pages into a Jekyll site:
+
+ - Move your files into `_posts` directory
+ - Rename your files to `YYYY-MM-DD-*.md` prefixed by date
+ - Write [front matter](https://jekyllrb.com/docs/front-matter/) on top of each files
+ - Add more your site's information in `_config.yml`. See (Jekyll configuration document](https://jekyllrb.com/docs/configuration/)
+ - Add `index.md` if there isn't. Take a look at your theme's one for reference
+
+After these setup, you'll stick on `_config.yml` for more customization.
+As many themes have their own configurations for their design and features, you can also add theme-specific configurations in this setting file.
+
+For instance, if you use `minima` theme and want to change date format in blog posts, you can specify it with the following configuration(see [minima's docs](https://github.com/jekyll/minima#skins)):
+
+```yaml
+minima:
+  date_format: "%b %-d, %Y"
+```
+
+That's all!
+
+Since customization is deep, it's important to read your theme's document.
+
+Hope you can make your blog grater, and also enjoy blog post. Cheers! ;)
