@@ -2,14 +2,16 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "This is a Yuki Sato's blog repository",
+  "scripts": {
+    "serve": "docker run --rm -p 4000:4000  -v $PWD/docs:/srv/jekyll  -it jekyll/jekyll:pages  jekyll serve --unpublished --future"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yukisato/blog.git"
   },
   "author": "Yuki Sato <yuki.sato.dev@gmail.com>",
-  "license": "LGPL",
   "bugs": {
     "url": "https://github.com/yukisato/blog/issues"
   },
-  "homepage": "https://yukisato.github.io/blog/",
+  "homepage": "https://yukisato.github.io/blog/"
 }
