@@ -1,8 +1,9 @@
 ---
 title: How to apply and customize themes on GitHub Pages
+description: This post explains how to make your GitHub Pages look better. 
 tags:
-- github
-- jekyll
+  - github
+  - jekyll
 ---
 
 This post is for those who write markdown files for GitHub Pages and want to make its appearance better. 

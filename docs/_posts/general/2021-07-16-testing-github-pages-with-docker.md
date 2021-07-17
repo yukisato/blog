@@ -1,9 +1,10 @@
 ---
 title: Testing GitHub Pages with Docker
+description: This post explains how to test your GitHub Pages locally using docker.
 tags:
-- github
-- docker
-- jekyll
+  - github
+  - docker
+  - jekyll
 ---
 
 This post explains how to check your blog's appearance for GitHub Pages using Docker.
