@@ -1,5 +1,8 @@
 ---
-title: How to make your GitHub Pages fancy
+title: How to apply and customize themes on GitHub Pages
+tags:
+- github
+- jekyll
 ---
 
 This post is for those who write markdown files for GitHub Pages and want to make its appearance better. 
@@ -62,8 +65,6 @@ minima:
   date_format: "%b %-d, %Y"
 ```
 
-That's all!
+That's all! If you want to test your site locally, also see my post [Testing GitHub Pages with Docker]({{ site.baseurl }}{% post_url /general/2021-07-16-testing-github-pages-with-docker %}).
 
-Since customization is deep, it's important to read your theme's document.
-
-Hope you can make your blog grater, and also enjoy blog post. Cheers! ;)
+Hope you enjoyed my post and can make your blog better ;)
