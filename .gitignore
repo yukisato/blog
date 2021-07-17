@@ -35,3 +35,5 @@ Temporary Items
 
 # Jekyll's build directory
 docs/_site/
+
+node_modules/

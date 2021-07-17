@@ -1,0 +1,15 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "This is a Yuki Sato's blog repository",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yukisato/blog.git"
+  },
+  "author": "Yuki Sato <yuki.sato.dev@gmail.com>",
+  "license": "LGPL",
+  "bugs": {
+    "url": "https://github.com/yukisato/blog/issues"
+  },
+  "homepage": "https://yukisato.github.io/blog/",
+}
