@@ -8,19 +8,19 @@ tags:
 This post is for those who write markdown files for GitHub Pages and want to make its appearance better. 
 
 You might know that the GitHub Pages is backended by Jekyll static site generator.
-This means you can theme/configure your site as thought your group of markdown files is a Jekyll site.
+This means you can theme/configure your site as though your group of markdown files is a Jekyll site.
 
 ## Difference between GitHub Pages and Jekyll
 
 The difference between Jekyll and GitHub Pages is configuration and installation.
-With using GitHub Pages, you implicitly omitted these processes to build your site:
+By using GitHub Pages, you implicitly omitted these processes to build your site:
 
  - Jekyll installation
  - Jekyll configuration
  - CI/CD for generating HTML files
 
-Of cause you can expricitly do these process to buiuld your site, but, the more you work on those processes, the less advantages of GitHub you make use of.
-Thus the point is to add just a small change for better appearance.
+Of cause you can explicitly do these processes to build your site, but, the more you work on those processes, the fewer advantages of GitHub you make use of.
+Thus the point is to add just a small change for a better appearance.
 
 ## Change appearance in one change
 
@@ -44,18 +44,18 @@ After you apply this configuration, you'll realize that this site is actually bu
 
 ## More customizations
 
-If you want to more customize youur pages like a blog site, you literally need to make your repository a Jekyll site.
-Fortunately, as desribed above, GitHub Pages is backended by Jekyll so we don't have to install Jekyll itself and all files of the theme you applied. But there still be something to do.
+If you want to more customize your pages like a blog site, you literally need to make your repository a Jekyll site.
+Fortunately, as described above, GitHub Pages is backended by Jekyll so we don't have to install Jekyll itself and all files of the theme you applied. But there still be something to do.
 
-Here's a basic instructions to change your pages into a Jekyll site:
+Here's basic instruction to change your pages into a Jekyll site:
 
  - Move your files into `_posts` directory
  - Rename your files to `YYYY-MM-DD-*.md` prefixed by date
- - Write [front matter](https://jekyllrb.com/docs/front-matter/) on top of each files
+ - Write [front matter](https://jekyllrb.com/docs/front-matter/) on top of each file
  - Add more your site's information in `_config.yml`. See (Jekyll configuration document](https://jekyllrb.com/docs/configuration/)
  - Add `index.md` if there isn't. Take a look at your theme's one for reference
 
-After these setup, you'll stick on `_config.yml` for more customization.
+After these setups, you'll stick on `_config.yml` for more customization.
 As many themes have their own configurations for their design and features, you can also add theme-specific configurations in this setting file.
 
 For instance, if you use `minima` theme and want to change date format in blog posts, you can specify it with the following configuration(see [minima's docs](https://github.com/jekyll/minima#skins)):

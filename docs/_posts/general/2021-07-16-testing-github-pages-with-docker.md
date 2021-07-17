@@ -6,7 +6,7 @@ tags:
 - jekyll
 ---
 
-This post explains how to check your blog's appearance for GitHuub Pages using Docker.
+This post explains how to check your blog's appearance for GitHub Pages using Docker.
 Make sure if your site follows [Jekyll directory structure](https://jekyllrb.com/docs/structure/).
 
 ## Prerequisites
@@ -18,8 +18,8 @@ Make sure if your site follows [Jekyll directory structure](https://jekyllrb.com
 If your site is just a group of `.md` files, my previous post [How to apply and customize themes on GitHub Pages]({{ site.baseurl }}{% post_url /general/2021-07-15-how-to-apply-and-customize-themes-on-github-pages %}) might be your help.
 
 ## Take advantage of the docker image
-Actually Jekyll publishes [a special container for GitHub Pages](https://hub.docker.com/r/jekyll/jekyll/tags?page=1&ordering=last_updated&name=pages) tagged by `pages`, so this is the one for debugging your gh-pages.
-It's better for DRY to create a serve script using `docker run` like this:
+Actually, Jekyll publishes [a special container for GitHub Pages](https://hub.docker.com/r/jekyll/jekyll/tags?page=1&ordering=last_updated&name=pages) tagged by `pages`, so this is the one for debugging your GitHub Pages.
+It's better to create a serve script to DRY using `docker run` like this:
 
  ```bash
  #!/bin/bash
