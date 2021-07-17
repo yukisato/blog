@@ -7,9 +7,9 @@ description: Random posts about programming and productivity
 permalink: /:categories/:title:output_ext
 author:
   name: Yuki Sato
-  email: 'yuki.sato.dev@gmail.com'
-url: "https://yukisato.github.io"
-baseurl: "/blog"
+  email: yuki.sato.dev@gmail.com
+url: https://yukisato.github.io
+baseurl: /blog
 
 minima:
   skin: solarized
