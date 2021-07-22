@@ -40,9 +40,12 @@ Open the following URL and you'll see a login page of the dashboard:
 
 `http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/`
 
-At this time, let's login with a `token`.
+<img width="801" alt="Screen Shot 2021-07-22 at 1 22 38 AM" src="https://user-images.githubusercontent.com/23222989/126609747-722dd797-79ea-41d8-af36-c675a60a68e8.png">
+
+You're almost the goal! The last part is to get a token and use it to login.
 
 ### Generate a token for logging in
+
 
 As described [in the microk8s's document](), you can ealisy get the token with this command:
 
@@ -51,6 +54,8 @@ token=$(kubectl -n kube-system get secret | grep default-token | cut -d " " -f1)
 kubectl -n kube-system describe secret $token
 ```
 
-You'll see the details of the secret, so use the token for logging into  the k8s dashboard.
+You'll see details of the secret and a token is listed, so use the token for logging into the k8s dashboard.
 
-All Done! Enjoy hacking with k8s! ;)
+<img width="1160" alt="Screen Shot 2021-07-22 at 1 26 09 AM" src="https://user-images.githubusercontent.com/23222989/126610169-4083c037-a1b8-46f4-a487-7c550abc2d98.png">
+
+All DONE! Enjoy hacking with k8s! ;)
