@@ -56,6 +56,6 @@ kubectl -n kube-system describe secret $token
 
 You'll see details of the secret and a token is listed, so use the token for logging into the k8s dashboard.
 
-<img width="1160" alt="Screen Shot 2021-07-22 at 1 26 09 AM" src="https://user-images.githubusercontent.com/23222989/126610169-4083c037-a1b8-46f4-a487-7c550abc2d98.png">
+<img width="1037" alt="Screen Shot 2021-07-22 at 1 26 09 AM" src="https://user-images.githubusercontent.com/23222989/126610787-f04026ab-0b7c-4423-bc3b-d752b7bae706.png">
 
 All DONE! Enjoy hacking with k8s! ;)
