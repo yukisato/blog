@@ -11,6 +11,9 @@ This post explains how to create a LAMP environment using docker-compose step by
 
 If you need a LEMP stack but are not testing Nginx configurations, this post can be your help too.
 
+* TOC
+{:toc}
+
 ## The goal
 
 As LAMP stands for, the building environment consists of the following stack:
