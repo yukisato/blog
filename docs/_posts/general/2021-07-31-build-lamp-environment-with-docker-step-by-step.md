@@ -297,7 +297,7 @@ Make sure this change still works restarting docker-compose.
 ## Create an environment file for DRY
 
 As those two docker containers use the same key-value environment variables, create a file and read it for DRY.
-Create a `.env.yml` for sharing envs:
+Create a `.env.mysql` for sharing envs:
 
 ```.env
 MYSQL_HOST=db
