@@ -7,21 +7,22 @@ tags:
   - lamp
 ---
 
-This post explains how to create a LAMP environment using `docker-compose` step by step.
+This post explains how to create a LAMP environment using docker-compose step by step.
+
 If you need a LEMP stack but are not testing Nginx configurations, this post can be your help too.
 
 ## The goal
 
-As LAMP stands for, building envirronment consists of the following stack:
+As LAMP stands for, the building environment consists of the following stack:
 
 - Linux
 - Apache
 - MySQL
 - PHP
 
-At this time, we're getting to see data inside a MySQL docker container through a PHP script running on another container, and it's served by Apache. Everything are running on Linux.
+At this time, we’re getting to see data inside a MySQL docker container through a PHP script running on another container, and it’s served by Apache. Everything is running on Linux.
 
-Actually, container technology uses Linux's security feature such as `namespace` and `cgroup`, using Docker implicitly means using Linux thus you don't have to think about setting up Linux. And, fortunately, PHP provides docker images containing pre-built Apache server for running PHP. So we can achieve this goal with just combining two docker images.
+Container technology uses Linux’s security features such as namespace and cgroup, using Docker implicitly means using Linux thus you don’t have to think about setting up Linux. And, fortunately, PHP provides docker images containing a pre-built Apache server for running PHP. So we can achieve this goal by just combining two docker images.
 
 ## Fundamentals
 
@@ -30,9 +31,9 @@ First of all, you need to know what you'll create:
 - docker-compose.yml
 - Dockefile
 
-`docker-compose.yml` is a main setting file that lists what and how containers work together.
+`docker-compose.yml` is the main setting file that lists what and how containers work together.
 
-`Dockerfile` is an IaaC(Infrastructure as a Code) file that lists how docker image is built.
+`Dockerfile` is an IaaC(Infrastructure as a Code) file that lists how a docker image is built.
 
 ## Create a base config file
 
@@ -52,7 +53,7 @@ services:
     image: mysql:8.0.26
 ```
 
-This file explayins just to run these two docker images creating each containers, and nothing else. We're adding more operations to build local environment.
+This file explains just to run these two docker images creating each container, and nothing else. We’re adding more operations to build the local environment.
 
 ## Serve PHP files in a container
 
@@ -88,23 +89,20 @@ docker-compose up
 
 Open `http://localhost:8080` in a browser. Can you see "Hello, world`"? If not, review your docker configurations and created files.
 
-If you're more CLI person, you can also test it by `curl localhost:8080` . It's easier.
+If you're a more CLI person, you can also test it by `curl localhost:8080` . It's easier.
 
 ## Configure the MySQL container
 
-This section consists of two sub sections:
+This section consists of two subsections:
 
 - Create a database on the MySQL container
 - Bind a volume to the MySQL container for persistency
 
-You firstly need to create a database in MySQL container. It's achieved just setting up environment variables on it.
-Secondaly persistent server's data using a `volume` feature.
-
-Let's go through from the first one.
+Firstly, you need to create a database in the MySQL container. It’s achieved by just setting up environment variables on it. Secondly, persistent server’s data using a `volume` feature.
 
 ### Create a database on the MySQL container
 
-Fortunately, it's quite easy to create an initial database with the MySQL docker image. [MySQL repository reference](https://hub.docker.com/_/mysql) says, this image creates an initial database if you set **environment variables**. So let's set them in the file:
+Fortunately, it's quite easy to create an initial database with the MySQL docker image. [MySQL repository reference](https://hub.docker.com/_/mysql) says this image creates an initial database if you set **environment variables**. So let's set them in the file:
 
 ```diff
   db:
@@ -116,7 +114,7 @@ Fortunately, it's quite easy to create an initial database with the MySQL docker
 +     MYSQL_ROOT_PASSWORD: mysql_local
 ```
 
-Re-run `docker-compose up` and you'll see a longer logs in your console. That means the container created a database with those specified values. You can check it by entering the contanier.
+Re-run `docker-compose up` and you’ll see longer logs in your console. That means the container created a database with those specified values. You can check it by entering the container.
 
 Before entering the container, let's name those containers for convenience(don't forget to re-run docker-compose):
 
@@ -162,7 +160,8 @@ mysql> show databases;
 
 ### Bind a volume to the MySQL container for persistency
 
-As a container is a fragile and temporal environment, you easily lose its data removing the container. Let's test it to exit `docker-compose` and remove all your stopped conteiners by `docker container prune -f`. After that, run `docker-compose up` so you'll see the same bunch of logs about the first database initialization again.
+As a container is a fragile and temporal environment, you easily lose its data removing the container. Let’s test it to exit `docker-compose` and remove all your stopped containers by `docker container prune -f`. After that, run `docker-compose up` so you’ll see the same bunch of logs about the first database initialization again.
+It’s time to persistent your data. Using a volume feature is the answer to this need. There’re two operations to make use of it:
 
 It's time to persistetnt your data. Using a `volume` feature is the answer for this need. There're two operations to make use of it:
 
@@ -171,7 +170,7 @@ It's time to persistetnt your data. Using a `volume` feature is the answer for t
 
 To take a look at the *Where to Store Data* section in the [MySQL image reference](https://hub.docker.com/_/mysql), `/var/lib/mysql` is used in this MySQL docker image.
 
->Note: /var/lib/mysql is a MySQL's default directory, but it doesn't mean every applications always use their defaults. It's really depends on how the image is made. So it's really important to check specs of an image of which you don't have clear understanding.
+>Note: /var/lib/mysql is a MySQL’s default directory, but it doesn’t mean every application always use their defaults. It depends on how the image is made. So it’s really important to check the specs of an image of which you don’t have a clear understanding.
 
 Edit your `docker-compose.yml` to create and use a volume named `db-data`:
 
@@ -199,12 +198,12 @@ This section consists of two subsections:
 
 This is similar to the previous MySQL setup section. Setup the container, then preserve it for persistency.
 
-At this time, we're preserving command line operations by `Dockerfile`.
+At this time, we're preserving command-line operations by `Dockerfile`.
 
 ### Install PHP extensions to connect to MySQL
 
-To connect to the MySQL server from the PHP container, you need to install several extensions such as `mysqli` , `pdo` and `pdo_mysql` in the PHP container.
-PHP docker images offer an easy way to install PHP extensions such as `docker-php-ext-install`. Enter the php container and execute the following command:
+To connect to the MySQL server from the PHP container, you need to install several extensions such as `mysqli`, `pdo`, and `pdo_mysql` in the PHP container.
+PHP Docker images offer an easy way to install PHP extensions such as `docker-php-ext-install`. Enter the php container and execute the following command:
 
 ```bash
 # Enter the PHP container
@@ -226,14 +225,14 @@ foreach($dbh->query('SHOW DATABASES') as $row) {
 }
 ```
 
-This code connects to the database, and write the result in the foreach loop. DB settings are previously set by environment variables in MySQL's section in `docker-compose.yml`. Host name `db` is a section name of the MySQL container. This name is resolved by docker's internal DNS.
+This code connects to the database, and writes the result in the foreach loop. DB settings are previously set by environment variables in MySQL's section in `docker-compose.yml`. Hostname `db` is a section name of the MySQL container. This name is resolved by docker's internal DNS.
 
 Access to `http://localhost:8080` and check it fetches a list of databases from the MySQL server.
 
 ### Create a Dockerfile to preserve the changes
 
 As explained before, a container loses all changes when removed.
-`Dockerfile` is a way to preserve opetations to a base image so let's make this file.
+`Dockerfile` is a way to preserve operations to a base image so let's make this file.
 Create a `php/` directory and a `Dockerfile` in this directory:
 
 ```dockerfile
@@ -241,10 +240,10 @@ FROM php:7.4.22-apache
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 ```
 
-The first line means, an image is based on `php:7.4.22-apache`.
-The second line literally runs given command to the base image.
+The first line means an image is based on `php:7.4.22-apache`.
+The second line runs the given command to the base image.
 
-You also need to modify `docker-compose.yml` so that it uses the Dockerfile to build an image and use it instead of pre-built docker image `php:7.4.22-apache`.
+You also need to modify `docker-compose.yml` so that it uses the Dockerfile to build an image and use it instead of the pre-built docker image `php:7.4.22-apache`.
 
 ```diff
   web:
@@ -254,8 +253,7 @@ You also need to modify `docker-compose.yml` so that it uses the Dockerfile to b
 +     dockerfile: php/Dockerfile
 ```
 
-`context` options is equivalant to `docker build` context. This means this image's build process can refer to all files under the given context. At this time we don't use any localfiles to build an image, so it's just a magic word.
-After the change, stop docker-compose and run it with `--build` option. This option lets docker-compose build new images whenever it runs and find referrencing Dockerfiles have been changed:
+The `context` option is equivalent to `docker build` context(see [Docker's document](https://docs.docker.com/engine/reference/commandline/build/#extended-description) for concise info). This means this image’s build process can refer to all files under the given context. At this time we don’t use any local files to build an image, so it’s just a magic word. After the change, stop docker-compose and run it with the `--build` option. This option lets docker-compose build new images whenever it runs and find referencing Dockerfiles have been changed:
 
 ```bash
 docker-compose up --build
@@ -293,7 +291,7 @@ Next, edit `docker-compose.yml` to pass envs to the container:
 Make sure this change still works restarting docker-compose.
 
 
-## Create envfile for DRY
+## Create an environment file for DRY
 
 As those two docker containers use the same key-value environment variables, create a file and read it for DRY.
 Create a `.env.yml` for sharing envs:
