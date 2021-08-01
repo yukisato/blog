@@ -1,5 +1,5 @@
 ---
-title: Build your LAMP environment with docker step by step
+title: Build LAMP environment with docker step by step
 description: This post explains how to create a LAMP environment using `docker-compose` step by step.
 tags:
   - docker
