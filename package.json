@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "This is a Yuki Sato's blog repository",
   "scripts": {
-    "serve": "docker run --rm -p 4000:4000  -v $PWD/docs:/srv/jekyll  -it jekyll/jekyll:pages  jekyll serve --unpublished --future"
+    "test": "npm run build; if [ $? != 0 ]; then echo '\n\nBuild failed...'; else echo '\n\nBuild successful!'; fi",
+    "build": "docker run --rm -p 4000:4000  -v $PWD/docs:/srv/jekyll  -it jekyll/jekyll:pages  jekyll build --drafts --unpublished --future",
+    "serve": "docker run --rm -p 4000:4000  -v $PWD/docs:/srv/jekyll  -it jekyll/jekyll:pages  jekyll serve --drafts --unpublished --future"
   },
   "repository": {
     "type": "git",
