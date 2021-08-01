@@ -3,7 +3,7 @@ timezone: America/Vancouver
 remote_theme: jekyll/minima
 show_excerpts: true
 title: Coding as Life
-description: This blog has articles about technorolgy, productivity, and several development tips.
+description: This blog has articles about technology, productivity, and several development tips.
 permalink: /:categories/:title:output_ext
 author:
   name: Yuki Sato
