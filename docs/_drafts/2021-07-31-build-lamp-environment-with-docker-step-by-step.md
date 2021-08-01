@@ -327,3 +327,18 @@ Modify `docker-compose.yml` to read it instead of specifying duplicated envs:
 
 Finally restart compose and see the result.
 
+## Final summary
+
+Throughout this post, you built a `docker-compose.yml` and a `Dockerfile` then might understand the following:
+
+- How to specify docker images
+- What Dockerfile is and how to use it
+- How to expose ports to connect
+- How to set environment variables
+- How to bind local directories to a container
+- How to create a volume and bind it to a container
+- And more
+
+As docker stacks are complicated, it takes time to grasp so don’t worry if you don’t understand it well. Just play around and try until you get it.
+
+Hope this post helps you start using `docker-compose` for building your local environment. Cheers ;)
