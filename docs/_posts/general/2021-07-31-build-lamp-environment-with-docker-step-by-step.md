@@ -11,17 +11,17 @@ This post explains how to create a LAMP environment using docker-compose step by
 
 If you need a LEMP stack but are not testing Nginx configurations, this post can be your help too.
 
-* TOC
+* TOCv
 {:toc}
 
 ## The goal
 
 As LAMP stands for, the building environment consists of the following stack:
 
-- Linux
-- Apache
-- MySQL
-- PHP
+* Linux
+* Apache
+* MySQL
+* PHP
 
 At this time, we’re getting to see data inside a MySQL docker container through a PHP script running on another container, and it’s served by Apache. Everything is running on Linux.
 
@@ -31,8 +31,8 @@ Container technology uses Linux’s security features such as namespace and cgro
 
 First of all, you need to know what you'll create:
 
-- docker-compose.yml
-- Dockefile
+* docker-compose.yml
+* Dockefile
 
 `docker-compose.yml` is the main setting file that lists what and how containers work together.
 
@@ -42,8 +42,8 @@ First of all, you need to know what you'll create:
 
 To build up `docker-compose.yml`, firstly you need to decide what docker images to use. You can find your preferable image at [Docker Hub](https://hub.docker.com/). At this time we're using these two images:
 
-- php:7.4.22-apache
-- mysql:8.0.26
+* php:7.4.22-apache
+* mysql:8.0.26
 
 Let's create the first `docker-compose.yml` file as a start point:
 
@@ -56,7 +56,17 @@ services:
     image: mysql:8.0.26
 ```
 
+>Note: As YAML is a space-indented language, you must NOT use tabs for indentation. Also, make sure you always use the same counts of spaces for each indent.
+
 This file explains just to run these two docker images creating each container, and nothing else. We’re adding more operations to build the local environment.
+
+If you use an M1 Mac, you probably need an additional line `platform: linux/x86_64` for MySQL:
+
+```diff
+  db:
++   platform: linux/x86_64
+    image: mysql:8.0.26
+```
 
 ## Serve PHP files in a container
 
@@ -98,8 +108,8 @@ If you're a more CLI person, you can also test it by `curl localhost:8080` . It'
 
 This section consists of two subsections:
 
-- Create a database on the MySQL container
-- Bind a volume to the MySQL container for persistency
+* Create a database on the MySQL container
+* Bind a volume to the MySQL container for persistency
 
 Firstly, you need to create a database in the MySQL container. It’s achieved by just setting up environment variables on it. Secondly, persistent server’s data using a `volume` feature.
 
@@ -168,8 +178,8 @@ It’s time to persistent your data. Using a volume feature is the answer to thi
 
 It's time to persistetnt your data. Using a `volume` feature is the answer for this need. There're two operations to make use of it:
 
-- Create a volume if not exists
-- Bind the volume to `/var/lib/mysql`
+* Create a volume if not exists
+* Bind the volume to `/var/lib/mysql`
 
 To take a look at the *Where to Store Data* section in the [MySQL image reference](https://hub.docker.com/_/mysql), `/var/lib/mysql` is used in this MySQL docker image.
 
@@ -196,8 +206,8 @@ Stop and delete your containers with `docker container prune -f`, and re-run `do
 
 This section consists of two subsections:
 
-- Install PHP extensions to connect to MySQL
-- Create a Dockerfile to preserve the changes
+* Install PHP extensions to connect to MySQL
+* Create a Dockerfile to preserve the changes
 
 This is similar to the previous MySQL setup section. Setup the container, then preserve it for persistency.
 
@@ -264,7 +274,6 @@ docker-compose up --build
 
 Access to `http://localhost:8080` to make sure it still works.
 
-
 ## Use Environment Variables in container
 
 In a real programing world, make use of environment variables in containers for flexibility is one of the best practices.
@@ -292,7 +301,6 @@ Next, edit `docker-compose.yml` to pass envs to the container:
 ```
 
 Make sure this change still works restarting docker-compose.
-
 
 ## Create an environment file for DRY
 
@@ -332,15 +340,41 @@ Finally restart compose and see the result.
 
 ## Final summary
 
-Throughout this post, you built a `docker-compose.yml` and a `Dockerfile` then might understand the following:
+Throughout this hands-on, the final `docker-compose.yml` you built should be the following:
 
-- How to specify docker images
-- What Dockerfile is and how to use it
-- How to expose ports to connect
-- How to set environment variables
-- How to bind local directories to a container
-- How to create a volume and bind it to a container
-- And more
+```yaml
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    container_name: local_web
+    env_file: .env.mysql
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 8080:80
+  db:
+    image: mysql:8.0.26
+    container_name: local_db
+    env_file: .env.mysql
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
+```
+
+In the end, you got the `docker-compose.yml` and the `Dockerfile` for the start point of your local environment. And you might understand the following:
+
+* How to specify docker images
+* What Dockerfile is and how to use it
+* How to expose ports to connect
+* How to set environment variables
+* How to bind local directories to a container
+* How to create a volume and bind it to a container
+* And more
 
 As docker stacks are complicated, it takes time to grasp so don’t worry if you don’t understand it well. Just play around and try until you get it.
 
