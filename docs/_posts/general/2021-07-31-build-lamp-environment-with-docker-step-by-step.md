@@ -171,12 +171,9 @@ mysql> show databases;
 +--------------------+
 ```
 
-### Bind a volume to the MySQL container for persistency
+### Bind a volume to the MySQL container
 
-As a container is a fragile and temporal environment, you easily lose its data removing the container. Let’s test it to exit `docker-compose` and remove all your stopped containers by `docker container prune -f`. After that, run `docker-compose up` so you’ll see the same bunch of logs about the first database initialization again.
-It’s time to persistent your data. Using a volume feature is the answer to this need. There’re two operations to make use of it:
-
-It's time to persistetnt your data. Using a `volume` feature is the answer for this need. There're two operations to make use of it:
+As a container is a fragile and temporal environment, you easily lose its data removing the container. Although the MySQL docker image saves its data using volume as default, let’s bind it to the explicitly defined volume for clarity. There’re two operations to make use of it:
 
 * Create a volume if not exists
 * Bind the volume to `/var/lib/mysql`
