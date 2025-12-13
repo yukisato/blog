@@ -1,33 +1,14 @@
-# Yuki's Tech Note
+# Yuki's Tech Note ✍️
 
 Personal tech blog by Yuki Sato.
 
-**Homepage:** `https://yukisato.dev`
+🌐 **Homepage:** [https://yukisato.dev](https://yukisato.dev)
 
-## What’s in this repo
+## Development 🛠️
 
-- Posts live in `_posts/` (published) and `_drafts/` (drafts)
-- Images live in `assets/img/posts/`
-- Theme: `jekyll-theme-chirpy` (Jekyll 4.x)
-- Deployment: GitHub Pages
+For local development, see [`AGENTS.md`](AGENTS.md).
 
-## Run locally
-
-```bash
-./tools/run.sh
-```
-
-Production mode:
-
-```bash
-./tools/run.sh -p
-```
-
-## Licensing
+## Licensing 📜
 
 - **Posts** (original written content): All Rights Reserved — see `LICENSE-CONTENT`.
 - **Code** (site tooling/config/theme customizations): MIT — see `LICENSE`.
-
-## License
-
-See [`LICENSE`](LICENSE).
