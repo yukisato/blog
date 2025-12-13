@@ -1,0 +1,22 @@
+services:
+  site:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+      - "35729:35729"
+    volumes:
+      - .:/app
+    environment:
+      JEKYLL_ENV: development
+      # Install gems into the project (gitignored) so it works with `user:` on Linux.
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_APP_CONFIG: .bundle
+    # Avoid root-owned files on Linux hosts (e.g. _site/, .jekyll-cache/)
+    user: "${UID:-1000}:${GID:-1000}"
+    command: >
+      bash -lc
+      "bundle check || bundle install --jobs 4 --retry 3 &&
+       bundle exec jekyll s -l -H 0.0.0.0 -P 4000 --force_polling"
+
+
