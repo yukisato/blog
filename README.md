@@ -8,6 +8,16 @@ Personal tech blog by Yuki Sato.
 
 For local development, see [`AGENTS.md`](AGENTS.md).
 
+### Pre-commit validation
+
+To automatically validate Jekyll builds before committing (recommended):
+
+```bash
+./scripts/install-hooks.sh
+```
+
+This installs a Git pre-commit hook that validates your posts and config changes before allowing commits.
+
 ## Licensing 📜
 
 - **Posts** (original written content): All Rights Reserved — see `LICENSE-CONTENT`.

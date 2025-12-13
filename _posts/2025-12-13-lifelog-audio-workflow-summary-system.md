@@ -4,9 +4,6 @@ date: 2025-12-13 18:00:00 -0800
 categories: [AI, Life Logging]
 tags: [lifelog, audio, transcription, workflow, summarization, ai-agent]
 description: "Designing and implementing a hierarchical summary system with daily, weekly, monthly, quarterly, and yearly summaries. Defining summary generation rules and format specifications."
-image:
-  path: 
-  alt: 
 ---
 
 ## TL;DR
