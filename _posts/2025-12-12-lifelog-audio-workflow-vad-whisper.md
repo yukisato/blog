@@ -53,7 +53,8 @@ This is the **anchor post** for a small series. I’ll publish short “snapshot
 - [ ] VAD threshold tuning: false positives / misses
 - [ ] Recovery/resume strategy for long Whisper runs
 - [ ] Daily JSONL merge + schema decisions
-- [ ] Summarization policy + automation
+- [x] [Summarization policy](/posts/lifelog-audio-workflow-summary-system/) (2025-12-13)
+- [ ] ~~Automation~~ (decided against)
 - [ ] (Optional) webrtcvad comparison
 
 ---
@@ -126,8 +127,8 @@ At a high level, this is the pipeline:
 
 - **Recovery after interrupted Whisper runs** (reuse partial progress)
 - **Daily JSONL merge** (operational foundation)
-- **Summarization policy** (start with direct JSONL reference)
-- **Automating summarization** (final step toward stable ops)
+- **Summarization policy** (design complete; implementation pending)
+- **Automating summarization** (format/rules defined; automation pending)
 
 ---
 
@@ -135,7 +136,8 @@ At a high level, this is the pipeline:
 
 - [ ] Validate VAD→Whisper: check false positives/misses, tune thresholds
 - [ ] Compare with webrtcvad if needed
-- [ ] Design the summarization flow
+- [x] Design the summarization flow
+- [ ] Design summary hosting and reminder notification system
 
 ---
 
@@ -157,6 +159,7 @@ Once this is true, I’ll write a **public roundup post** that links to the most
 
 | Date | Notes |
 | --- | --- |
+| 2025/12/13 | Designed hierarchical summary generation rules (daily/weekly/monthly/quarterly/yearly, date boundary, week start). Reorganized AGENTS.md to clarify generation rules. |
 | 2025/12/12 | Dropped the TXT layer. New plan: merge JSONL by day → have the AI reference JSONL directly for a simpler system. |
 | 2025/12/07 | Verified long recording stability (battery/storage/background). No issues. |
 | 2025/12/06 | Switched to passing VAD segments directly to Whisper in memory to reduce I/O. Input 7h46m → small: 317s (~88× realtime), large-v3: 486s (~57× realtime). |
