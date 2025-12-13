@@ -16,26 +16,25 @@ I’m building a local-first lifelog system: record my day with a mouth mic, seg
 ## Current system diagram
 
 ```text
-┌───────────────────────────────┐
-│ Android phone                 │
-│ - Smart Voice Recorder        │
-│   (VAD OFF, mono 16 kbps)     │
-└───────────────┬───────────────┘
-                │ Syncthing sync (when home)
-                ▼
-┌───────────────────────────────┐
-│ Ubuntu desktop                │
-│ - Syncthing: receives audio   │
-│               │ new file      │
-│               ▼               │
-│ - Watcher: detects + queues   │
-│               ▼               │
-│ - Silero VAD: segment speech  │
-│               ▼               │
-│ - Whisper: transcribe         │
-│               ▼               │
-│ - Output: daily JSONL         │
-└───────────────────────────────┘
++---------------------------+
+| Android phone             |
+| - Smart Voice Recorder    |
+|   (VAD off, mono 16 kbps) |
++-------------+-------------+
+              |
+              | Syncthing (when home)
+              v
++---------------------------+
+| Ubuntu desktop            |
+| 1) Receive (Syncthing)    |
+| 2) Detect + queue         |
+|    (Watcher)              |
+| 3) Segment speech         |
+|    (Silero VAD)           |
+| 4) Transcribe             |
+|    (Whisper)              |
+| 5) Write daily JSONL      |
++---------------------------+
 ```
 
 ---

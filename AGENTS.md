@@ -19,6 +19,11 @@ Minimal instructions for AI coding assistants working on this Jekyll blog.
 - Put post images under `assets/img/posts/YYYY-MM-DD-post-slug/`
 - Always include meaningful **alt text**
 
+## Text diagrams (ASCII)
+
+- Use **ASCII characters only** (`+ - | > v` etc.). Avoid Unicode box-drawing characters (e.g., `┌─│└`) because they can render differently across devices.
+- Keep lines **<= 40 characters wide** to reduce mobile layout issues.
+
 ## Local development
 
 ```bash
