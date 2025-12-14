@@ -4,6 +4,8 @@ Personal tech blog by Yuki Sato.
 
 🌐 **Homepage:** [https://yukisato.dev](https://yukisato.dev)
 
+![CI](https://github.com/yukisato/blog/actions/workflows/pages-deploy.yml/badge.svg)
+
 ## Development 🛠️
 
 For local development, see [`AGENTS.md`](AGENTS.md).
